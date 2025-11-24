@@ -1,5 +1,5 @@
 async function loadNoteArticles(targetId) {
-  const RSS_URL = "/api/rss"; // serverless API
+  const RSS_URL = "/api/rss";
 
   try {
     const res = await fetch(RSS_URL);
@@ -7,19 +7,21 @@ async function loadNoteArticles(targetId) {
     const parser = new DOMParser();
     const xml = parser.parseFromString(xmlText, "text/xml");
 
-    const items = Array.from(xml.querySelectorAll("item")).slice(0, 12);
+    const items = Array.from(xml.getElementsByTagName("item")).slice(0, 12);
     const area = document.getElementById(targetId);
 
     area.innerHTML = items.map(item => {
-      const title = item.querySelector("title")?.textContent ?? "No title";
-      const link = item.querySelector("link")?.textContent ?? "#";
-      const date = new Date(item.querySelector("pubDate")?.textContent);
+      const title = item.getElementsByTagName("title")[0]?.textContent ?? "No title";
+      const link = item.getElementsByTagName("link")[0]?.textContent ?? "#";
+      const date = new Date(item.getElementsByTagName("pubDate")[0]?.textContent);
 
-      const thumbnail = item.querySelector("media\\:thumbnail")?.getAttribute("url")
-        ?? "assets/images/no-image.png";
+      // ★ 修正したサムネイル取得
+      const thumbTag = item.getElementsByTagName("media:thumbnail")[0];
+      const thumbnail = thumbTag ? thumbTag.getAttribute("url") : "assets/images/no-image.png";
 
-      const creator = item.querySelector("note\\:creatorName")?.textContent ?? "unknown";
-      const creatorImage = item.querySelector("note\\:creatorImage")?.textContent 
+      // ★ 修正した著者アイコン/著者名
+      const creatorName = item.getElementsByTagName("note:creatorName")[0]?.textContent ?? "unknown";
+      const creatorImage = item.getElementsByTagName("note:creatorImage")[0]?.textContent
         ?? "assets/images/default-icon.png";
 
       return `
@@ -31,7 +33,7 @@ async function loadNoteArticles(targetId) {
             <h3>${title}</h3>
             <div class="meta">
               <img src="${creatorImage}" class="avatar">
-              <span>${creator}</span>
+              <span>${creatorName}</span>
               ・<span>${date.toLocaleDateString()}</span>
             </div>
             <div class="actions">
@@ -48,5 +50,4 @@ async function loadNoteArticles(targetId) {
     console.error("RSS fetch failed:", err);
   }
 }
-
 
