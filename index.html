@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>null</title>
+
+  <link rel="stylesheet" href="styles/main.css">
+
+  <!-- Google AdSense（後で I のIDに変更） -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-ID" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">null</div>
+
+  <nav>
+    <a href="/">Home</a> |
+    <a href="/note/">note</a> |
+    <a href="/articles/sample.html">Web記事</a>
+    <button id="themeBtn" style="margin-left:20px;">テーマ変更</button>
+  </nav>
+</header>
+
+
+<div style="padding:30px">
+
+  <!-- Web Articles -->
+  <h2 class="section-title">Web Articles</h2>
+  <div class="grid grid-3">
+    <a href="articles/sample.html" class="card">
+      <h3>Web記事サンプル</h3>
+      <p>これは独自HTMLで書く記事ページです。</p>
+    </a>
+  </div>
+
+
+  <hr style="margin:40px 0; border:0; border-top:1px solid #FFD6E0;">
+
+
+  <!-- note Articles -->
+  <h2 class="section-title">note Articles</h2>
+  <div id="note-area" class="grid grid-3"></div>
+</div>
+
+
+<footer>
+  null © 2025
+</footer>
+
+<script src="scripts/note-fetch.js"></script>
+<script>
+  loadNoteArticles("note-area");
+</script>
+<script src="scripts/theme.js"></script>
+
+</body>
+</html>

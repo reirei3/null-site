@@ -1,0 +1,84 @@
+/* ====== Base ====== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #FFFFFF, #F7F9FF);
+  color: #333;
+}
+
+/* ====== Header ====== */
+header {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ====== Logo (null) ====== */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #005BFF; /* 濃い上品な青 */
+}
+
+/* ====== Card (Glass) ====== */
+.card {
+  background: rgba(255, 255, 255, 0.70);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 18px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 6px 20px rgba(0, 91, 255, 0.10);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 91, 255, 0.18);
+}
+
+/* ====== Section Titles ====== */
+.section-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #005BFF; /* 濃い青 */
+  margin-bottom: 10px;
+}
+
+/* ====== Grid System ====== */
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* ====== Links ====== */
+a {
+  color: #005BFF; /* リンクも青 */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* ====== Footer ====== */
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 13px;
+  color: #777;
+}
+
+}

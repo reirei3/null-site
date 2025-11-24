@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>note記事 | null</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo">null</div>
+  <nav><a href="/">Home</a> | <a href="/articles/sample.html">Web記事</a></nav>
+</header>
+
+<div style="padding:30px;">
+  <h2 class="section-title">note Articles</h2>
+  <div id="note-list" class="grid grid-3"></div>
+</div>
+
+<script src="../scripts/note-fetch.js"></script>
+<script>
+  loadNoteArticles("note-list");
+</script>
+
+<footer>null © 2025</footer>
+</body>
+</html>
